@@ -1,12 +1,11 @@
 
 import React from 'react';
+import { FormularioPokemon } from './components/FormularioPokemon';
 
-export const App = () => {
-
-    
+export default function App()  {    
   return (
     <>
-    
+      <FormularioPokemon/>  
     </>
   );
 };
