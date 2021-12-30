@@ -8,12 +8,14 @@ import { Container } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import { FormComponents } from './utils/FormComponents';
 import { FormTable } from './utils/FormTable';
+import { IPokemonState } from '../types/IPokemonState';
+import { IAction } from '../types/IPokemonReducer';
 
 export const FormularioPokemon = () => {
 
-    const [state, dispatch] = useReducer(todoReducer, []);
+    const [ listadoPokemon, dispatch ] = useReducer(todoReducer, []);
 
-    const [propiedadesPokemon, setPropiedadesPokemon] = useState({
+    const [propiedadesPokemon, setPropiedadesPokemon] = useState<IPokemonState> ({
         id: 0,
         name: '',
         base_experience: 0,
@@ -32,17 +34,20 @@ export const FormularioPokemon = () => {
                 const tipos: string = types.map(type => type.type?.name).join(', ');
                 const habilidades: string = abilities.map(abilities => abilities.ability?.name).join(', ');
                 
-                if(id === propiedadesPokemon.id || name === propiedadesPokemon.name){
+                const esRepetido: boolean = listadoPokemon.some((PokemonData: IPokemonState) => PokemonData.id === id || PokemonData.name === name);                
+
+                if (esRepetido) {
                     Swal.fire({
                         icon: "info",
                         title: 'pokemon ya  existe',
-                      });
-                    return                    
-                };
+                    }); 
 
-                setPropiedadesPokemon({
-                    id, name, base_experience, height, tipos, habilidades, sprites
-                }); 
+                } else {
+                    setPropiedadesPokemon({
+                        id, name, base_experience, height, tipos, habilidades, sprites
+                    }); 
+                }
+
                               
             }).catch((error) => {
                 Swal.fire({
@@ -54,7 +59,7 @@ export const FormularioPokemon = () => {
 
     useEffect(() => {
 
-        const action ={
+        const action: IAction ={
             type: 'obtener',
             payload: propiedadesPokemon
         };
@@ -88,7 +93,7 @@ export const FormularioPokemon = () => {
 
                         </Form>
 
-                            <FormTable state={state}/>
+                            <FormTable dataSource={listadoPokemon}/>
                     </Container>
                     
                 </>

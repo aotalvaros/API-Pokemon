@@ -1,10 +1,10 @@
 import { Paper } from '@material-ui/core'
 import { Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material'
 import React from 'react'
-import { StyledTableCell, StyledTableRow } from '../../styles/estilosTabla'
+import { StyledTableCell, StyledTableRow } from '../../styles/utils/estilosTabla'
 import logoPokemon from '../../image/pokemon-logo-transparent-hd-png-download.png'
 
-export const FormTable = ({state}: any) => {
+export const FormTable = ({dataSource}: any) => {
     return (
         <div>
             <img
@@ -27,7 +27,7 @@ export const FormTable = ({state}: any) => {
                     </TableHead>
                     <TableBody>
                         {
-                            state.filter((id: any) => id.id !== 0).map((propiedades: any) => (                                          
+                            dataSource.filter((id: any) => id.id !== 0).map((propiedades: any) => (                                          
                                 <StyledTableRow 
                                     key={propiedades.id}
                                 >
