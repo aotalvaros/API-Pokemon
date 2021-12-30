@@ -4,8 +4,8 @@ export default interface IPokemon {
     name: string,
     base_experience: number,
     height: number,
-    types: ITypes,
-    abilities: IAbilities,
+    types: ITypes[],
+    abilities: IAbilities[],
     sprites: ISprites
 };
 
