@@ -23,16 +23,20 @@ describe('debe construir un formulario de Pokemon', () => {
                 name: 'clefairy',
                 base_experience: 113,
                 height:6,
-                types:{
-                    type: {
-                        name: 'fairy'
+                types:[
+                    {
+                        type: {
+                            name: 'fairy'
+                        }
                     }
-                },
-                abilities:{
-                    ability:{
-                        name: 'magic-guard'
+                ],
+                abilities:[
+                    {
+                        ability:{
+                            name: 'magic-guard'
+                        }
                     }
-                },
+                ],
                 sprites: {
                     front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/valor.png"
                 }
@@ -51,16 +55,16 @@ describe('debe construir un formulario de Pokemon', () => {
                 expect(name).toBe('clefairy');
                 expect(base_experience).toEqual(113);
                 expect(height).toEqual(6);
-                expect(types).toEqual({
+                expect(types).toEqual([{
                     type: {
                         name: 'fairy'
                     }
-                });
-                expect(abilities).toEqual({
+                }]);
+                expect(abilities).toEqual([{
                     ability:{
                         name: 'magic-guard'
                     }
-                });
+                }]);
                 expect(sprites).toEqual({
                     front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/valor.png"
                 });
@@ -81,16 +85,20 @@ describe('debe construir un formulario de Pokemon', () => {
                 name: 'clefairy',
                 base_experience: 113,
                 height:6,
-                types:{
-                    type: {
-                        name: 'fairy'
+                types:[
+                    {
+                        type: {
+                            name: 'fairy'
+                        }
                     }
-                },
-                abilities:{
-                    ability:{
-                        name: 'magic-guard'
+                ],
+                abilities:[
+                    {
+                        ability:{
+                            name: 'magic-guard'
+                        }
                     }
-                },
+                ],
                 sprites: {
                     front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/valor.png"
                 }
@@ -109,16 +117,16 @@ describe('debe construir un formulario de Pokemon', () => {
                 expect(name).toBe(valor);
                 expect(base_experience).toEqual(113);
                 expect(height).toEqual(6);
-                expect(types).toEqual({
+                expect(types).toEqual([{
                     type: {
                         name: 'fairy'
                     }
-                });
-                expect(abilities).toEqual({
+                }]);
+                expect(abilities).toEqual([{
                     ability:{
                         name: 'magic-guard'
                     }
-                });
+                }]);
                 expect(sprites).toEqual({
                     front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/valor.png"
                 });
@@ -128,7 +136,7 @@ describe('debe construir un formulario de Pokemon', () => {
         
     });
 
-    test('debe devolver un error', (done) => {
+    test('debe devolver un error', async() => {
         const responseError: AxiosError = {
             config: {},
             isAxiosError: false,
@@ -139,11 +147,7 @@ describe('debe construir un formulario de Pokemon', () => {
 
         mockedAxios.get.mockRejectedValue(responseError);
 
-        obtenerPokemonAPI(2).catch((error: AxiosError) => {
-            expect(error).toBe('Error de conexion');
-            expect(mockedAxios.get).toHaveBeenCalledWith(`https://pokeapi.co/api/v2/pokemon/${2}`);
-            done();
-        });
+        await expect(obtenerPokemonAPI(10000)).rejects.toEqual('Pokemon no existe');
     });
     
 });
