@@ -136,7 +136,7 @@ describe('debe construir un formulario de Pokemon', () => {
         
     });
 
-    test('debe devolver un error', async() => {
+    test('debe devolver un error si no hay problemas de conexion', async() => {
         const responseError: AxiosError = {
             config: {},
             isAxiosError: false,
@@ -147,7 +147,30 @@ describe('debe construir un formulario de Pokemon', () => {
 
         mockedAxios.get.mockRejectedValue(responseError);
 
-        await expect(obtenerPokemonAPI(10000)).rejects.toEqual('Pokemon no existe');
+        await expect(obtenerPokemonAPI(10000)).rejects.toEqual('Ups!, ocurrio un error inesperado, intentalo nuevamente');
     });
+
+    test('debe devolver un error si no encuentra el pokemon solicitado', async() => {
+        const responseError: AxiosError = {
+            config: {},
+            isAxiosError: false,
+            name: "Error",
+            message: "Request failed with status code 404",
+            response: {
+                data: '',
+                status: 404,
+                statusText: '',
+                headers: {},
+                config: {},
+            },
+            toJSON: jest.fn()
+        };
+
+        mockedAxios.get.mockRejectedValue(responseError);
+
+        await expect(obtenerPokemonAPI(1000)).rejects.toEqual('El Pokemon no existe');
+    })
+    
+    
     
 });
