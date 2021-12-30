@@ -5,9 +5,20 @@
 
 .columna {
     padding-bottom: 8px;
-    padding-right: 0px;
+    padding-left: 10px;
 }
 
 .table{
     padding-top:15px;
 }
+
+.img-pokemon{
+    max-height: 70px;
+    max-width: 120px;
+    margin: auto;
+    padding: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+
