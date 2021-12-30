@@ -1,0 +1,13 @@
+.error-message {
+    color: rgb(221, 88, 88);
+    font-size: medium;
+}
+
+.columna {
+    padding-bottom: 8px;
+    padding-right: 0px;
+}
+
+.table{
+    padding-top:15px;
+}
