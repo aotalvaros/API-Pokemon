@@ -1,42 +1,65 @@
 import { ErrorMessage, Field } from 'formik';
 import React from 'react'
-import { Col } from 'react-bootstrap';
-import { Button, TextField } from "@material-ui/core";
+import { Button, Grid, TextField } from "@material-ui/core";
 import '../../styles/components/FormularioPokemon.css';
+import { RootStateOrAny,  useSelector } from "react-redux";
+import { SpinnerDotted } from 'spinners-react';
 
 export const FormComponents = ({ errors, touched }: any) => {
+    
+    const { loading } = useSelector( (state: RootStateOrAny) => state.ui );
+    
     return (
         <div>
-            <Col className="columna">
-                <Field name="inputValor">
-                {({ field }: any) => (
-                    <TextField
-                    className="col-12 col-xs-12"                       
-                    {...field}
-                    type="text"
-                    id="inputValor"
-                    label="ID o Nombre del pokemon"
-                    error={
-                        !!errors.inputValor &&
-                        touched.inputValor
-                    }                               
+            <Grid>
+                <Grid item xs={12}>
+                    <Field name="inputValor">
+                    {({ field }: any) => (
+                        <TextField                     
+                        {...field}
+                        className="col-12 col-xs-12" 
+                        type="text"
+                        id="inputValor"
+                        
+                        label="ID o Nombre del pokemon"
+                        error={
+                            !!errors.inputValor &&
+                            touched.inputValor
+                        } 
+                        style={{ 
+                            width: '234px'
+                        }}
+
+                        />
+                    )}
+                    </Field>
+                </Grid>
+                <Grid item xs={12}>
+                    <ErrorMessage
+                    className="error-message"
+                    data-testid="errorinputValor"
+                    name="inputValor"
+                    component="span"
                     />
-                )}
-                </Field>
-            </Col>
-            <Col className="columna">
-                <ErrorMessage
-                className="error-message"
-                data-testid="errorinputValor"
-                name="inputValor"
-                component="span"
-                />
-            </Col>
-            <Col className="columna">    
-                <Button type="submit" color='primary' variant="contained">
-                    Obtener datos pokemon
-                </Button>
-            </Col>
+                </Grid>  
+                
+                <Grid item xs={12} style={{ marginTop: '10px'}}>
+                    <Button type="submit" color='primary' variant="contained">
+                        Obtener datos pokemon
+                    </Button>
+                </Grid> 
+
+                <Grid item xs={12} style={{ 
+                        marginTop: '10px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <SpinnerDotted 
+                        size={50} thickness={100} speed={100} color="#36ad47" 
+                        enabled={loading}/>
+                </Grid>
+            </Grid>
         </div>
-    )
-}
+    );
+};
