@@ -1,2 +1,2 @@
 export { StyledTableCell, StyledTableRow } from "../styles/utils/estilosTabla";
-export { todoReducer } from '../Reducers/todoReducer';
+export { listPokemonReducer as todoReducer } from '../Reducers/listPokemonReducer';
