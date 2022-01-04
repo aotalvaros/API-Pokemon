@@ -4,7 +4,7 @@ import React from 'react'
 import { StyledTableCell, StyledTableRow } from '../../styles/utils/estilosTabla'
 import logoPokemon from '../../image/pokemon-logo-transparent-hd-png-download.png'
 
-export const FormTable = ({dataSource}: any) => {
+export const FormTablePokemon = ({dataSource}: any) => {
     return (
         <div>
             <img
@@ -16,7 +16,7 @@ export const FormTable = ({dataSource}: any) => {
                 <Table sx={{ minWidth: 650}} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <StyledTableCell>ids</StyledTableCell>
+                            <StyledTableCell>id</StyledTableCell>
                             <StyledTableCell align="right" >Nombre</StyledTableCell>
                             <StyledTableCell align="right">Experiencia</StyledTableCell>
                             <StyledTableCell align="right">Altura</StyledTableCell>
