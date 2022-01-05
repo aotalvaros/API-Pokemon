@@ -1,0 +1,64 @@
+
+.form__components-error-message{
+    color: rgb(221, 88, 88);
+    font-size: medium;
+    padding: 5px;
+
+}
+
+.form__components-container-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.form__components-img-pokemon{
+    max-height: 70px;
+    max-width: 120px;
+    margin: auto;
+    padding: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.btn{
+   background-color: transparent;
+   border: none;
+   color: white;
+   font-size: 12px; 
+   padding: 7px 10px 7px 10px;
+
+    &:focus{ 
+        outline: none;
+    } 
+}
+
+.btn-primary{
+    background-color: #5C62C5;
+    border-radius: 2px;
+
+    &:disabled{
+        background-color: lighten($color: #5C62C5, $amount: 15);
+    }
+
+    &:hover{ 
+        background-color: darken($color: #5C62C5, $amount: 17);
+    }
+}
+
+.btn-block{
+    width: 100%;
+}
+
+.grid-spinner{
+    margin-top: '10px';
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+}
+
+
+
+
