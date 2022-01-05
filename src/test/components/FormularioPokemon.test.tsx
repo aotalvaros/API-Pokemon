@@ -4,6 +4,8 @@ import { FormularioPokemon } from '../../components/FormularioPokemon';
 import { obtenerPokemonAPI } from '../../domain/obtenerPokemonAPI';
 import { mockFunction } from '../../helpers/JestHelpers';
 import IPokemon from '../../types/IPokemon';
+import { Provider } from 'react-redux';
+import { store } from '../../store/store';
 
 jest.mock('../../domain/obtenerPokemonAPI');
 
@@ -13,7 +15,9 @@ describe('debe mostrar un formulario de Pokemon', () => {
 
     const setUp = () => render(
         <>
+        <Provider store={store}>
           <FormularioPokemon/>
+        </Provider>
         </>
     );
     
