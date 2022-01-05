@@ -1,7 +1,6 @@
 import { ErrorMessage, Field } from 'formik';
 import React from 'react'
 import { Button, Grid, TextField } from "@material-ui/core";
-import '../../styles/components/FormularioPokemon.css';
 import { RootStateOrAny,  useSelector } from "react-redux";
 import { SpinnerDotted } from 'spinners-react';
 
@@ -15,28 +14,26 @@ export const FormComponents = ({ errors, touched }: any) => {
                 <Grid item xs={12}>
                     <Field name="inputValor">
                     {({ field }: any) => (
-                        <TextField                     
-                        {...field}
-                        className="col-12 col-xs-12" 
+                        <TextField                  
+                        {...field}                       
                         type="text"
-                        id="inputValor"
-                        
+                        id="inputValor"                       
                         label="ID o Nombre del pokemon"
                         error={
                             !!errors.inputValor &&
                             touched.inputValor
                         } 
                         style={{ 
+                            margin: '5px',
                             width: '234px'
-                        }}
-
+                        }}                       
                         />
                     )}
                     </Field>
                 </Grid>
                 <Grid item xs={12}>
                     <ErrorMessage
-                    className="error-message"
+                    className="form__components-error-message"
                     data-testid="errorinputValor"
                     name="inputValor"
                     component="span"
@@ -44,12 +41,17 @@ export const FormComponents = ({ errors, touched }: any) => {
                 </Grid>  
                 
                 <Grid item xs={12} style={{ marginTop: '10px'}}>
-                    <Button type="submit" color='primary' variant="contained">
+                    <Button 
+                        type="submit"
+                        color='primary' 
+                        variant="contained"                        
+                    >
                         Obtener datos pokemon
                     </Button>
                 </Grid> 
 
-                <Grid item xs={12} style={{ 
+                <Grid item xs={12} 
+                    style={{ 
                         marginTop: '10px',
                         display: 'flex',
                         alignItems: 'center',

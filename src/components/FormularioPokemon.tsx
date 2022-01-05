@@ -1,6 +1,5 @@
 import { Form, Formik } from "formik";
-import "../styles/components/FormularioPokemon.css";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { obtenerPokemonAPI } from "../domain/obtenerPokemonAPI";
 import * as Yup from "yup";
 import Container from "@mui/material/Container";
@@ -10,6 +9,8 @@ import { FormTablePokemon } from "./utils/FormTablePokemon";
 import { IPokemonState } from "../types/IPokemonState";
 import { useDispatch } from "react-redux";
 import { finishLoading, startLoading } from "../actions/ui";
+import logoPokemon from '../image/pokemon-logo-transparent-hd-png-download.png'
+
 
 export const FormularioPokemon = () => {
   
@@ -81,15 +82,19 @@ export const FormularioPokemon = () => {
                 
               <Form noValidate onSubmit={handleSubmit}>
 
-                <div className="container-form">               
+                <div className="form__components-container-form">               
                   <FormComponents
                     errors={errors}
                     touched={touched}
-                    className="btn-obtenerPokemon"
                   />
                 </div>
 
               </Form>
+                <img
+                  className='form__components-img-pokemon'
+                  alt=""
+                  src={logoPokemon}
+                />
               {
                 (listadoPokemon.length !== 0 ) && <FormTablePokemon dataSource={listadoPokemon} />
               }             
