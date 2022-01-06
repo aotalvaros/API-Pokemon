@@ -1,9 +1,9 @@
 import { Paper } from '@material-ui/core'
 import { Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material'
 import React from 'react'
-import { StyledTableCell, StyledTableRow } from '../../styles/utils/estilosTabla'
+import { StyledTableCell, StyledTableRow } from '../../styles/components/utils/estilosTabla'
 
-export const FormTablePokemon = ({dataSource}: any) => {
+export const    FormTablePokemon = ({dataSource}: any) => {
     return (
         <div>
             <TableContainer component={Paper} className='table__form-tablePokemon'>

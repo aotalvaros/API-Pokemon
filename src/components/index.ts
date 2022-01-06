@@ -1,1 +1,1 @@
-export { StyledTableCell, StyledTableRow } from "../styles/utils/estilosTabla";
+export { StyledTableCell, StyledTableRow } from "../styles/components/utils/estilosTabla";
