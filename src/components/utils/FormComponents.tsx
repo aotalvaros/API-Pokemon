@@ -1,8 +1,7 @@
 import { ErrorMessage, Field } from 'formik';
-import React from 'react'
-import { Button, Grid, TextField } from "@material-ui/core";
 import { RootStateOrAny,  useSelector } from "react-redux";
 import { SpinnerDotted } from 'spinners-react';
+import { Button, Grid, TextField } from '@mui/material';
 
 export const FormComponents = ({ errors, touched }: any) => {
     
@@ -15,51 +14,45 @@ export const FormComponents = ({ errors, touched }: any) => {
                     <Field name="inputValor">
                     {({ field }: any) => (
                         <TextField                  
-                        {...field}                       
-                        type="text"
-                        id="inputValor"                       
-                        label="ID o Nombre del pokemon"
-                        error={
-                            !!errors.inputValor &&
-                            touched.inputValor
-                        } 
-                        style={{ 
-                            margin: '5px',
-                            width: '234px'
-                        }}                       
+                            {...field}                       
+                            type="text"
+                            id="inputValor"                       
+                            label="ID o Nombre del pokemon"
+                            error={
+                                !!errors.inputValor &&
+                                touched.inputValor
+                            } 
+                            className='form__components-textField'
+                            variant="outlined"                       
                         />
                     )}
                     </Field>
                 </Grid>
                 <Grid item xs={12}>
                     <ErrorMessage
-                    className="form__components-error-message"
-                    data-testid="errorinputValor"
-                    name="inputValor"
-                    component="span"
+                        className="form__components-error-message"
+                        data-testid="errorinputValor"
+                        name="inputValor"
+                        component="span"
                     />
                 </Grid>  
                 
                 <Grid item xs={12} style={{ marginTop: '10px'}}>
                     <Button 
-                        type="submit"
-                        color='primary' 
-                        variant="contained"                        
+                        type="submit"                                               
+                        className='form__buttons-button form_buttons-primary'                    
                     >
                         Obtener datos pokemon
                     </Button>
                 </Grid> 
 
-                <Grid item xs={12} 
-                    style={{ 
-                        marginTop: '10px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}>
-                        <SpinnerDotted 
-                        size={50} thickness={100} speed={100} color="#36ad47" 
-                        enabled={loading}/>
+                <Grid 
+                    item xs={12}
+                    className='form__components-grid'
+                >
+                    <SpinnerDotted 
+                    size={50} thickness={100} speed={100} color="#216101" 
+                    enabled={loading}/>
                 </Grid>
             </Grid>
         </div>
