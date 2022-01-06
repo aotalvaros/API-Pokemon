@@ -1,0 +1,11 @@
+
+@mixin table__form-styles ($paddingTop, $display, $width) {
+    padding-top: $paddingTop;
+    display: $display;
+    width: $width;
+}
+
+.table__form-tablePokemon{
+    @include table__form-styles(15px, flex, 100% );
+}
+
